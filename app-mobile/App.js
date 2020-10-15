@@ -2,15 +2,20 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import PushNotifications from './src/services/PushNotifications'
+import GeoLocation from './src/services/GeoLocation'
 import * as firebase from 'firebase'
 import ApiKeys from './constants/ApiKeys'
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     if (!firebase.apps.length) { 
       firebase.initializeApp(ApiKeys);
     }
+  }
+  componentDidMount(){
     PushNotifications.registerForPushNotifications()
+    GeoLocation.registerForGeoLocation()
   }
   render() {
   return (
