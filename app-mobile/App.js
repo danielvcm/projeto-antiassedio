@@ -16,7 +16,9 @@ export default class App extends React.Component {
   componentDidMount(){
     PushNotifications.registerForPushNotifications()
     GeoLocation.registerForGeoLocation()
+    GeoLocation.watchPosition()
   }
+
   render() {
   return (
     <View style={styles.container}>
