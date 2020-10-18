@@ -9,5 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 google-services.json
+package-lock.json
+
 # macOS
 .DS_Store

@@ -2,16 +2,25 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import PushNotifications from './src/services/PushNotifications'
+import GeoLocation from './src/services/GeoLocation'
+import * as TaskManager from 'expo-task-manager';
+import * as Location from 'expo-location';
 import * as firebase from 'firebase'
 import ApiKeys from './constants/ApiKeys'
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     if (!firebase.apps.length) { 
       firebase.initializeApp(ApiKeys);
     }
-    PushNotifications.registerForPushNotifications()
   }
+  componentDidMount = async()=>{
+    PushNotifications.registerForPushNotifications()
+    GeoLocation.registerForGeoLocation()
+    await Location.startLocationUpdatesAsync('getLocationTask',{'accuracy': Location.Accuracy.Highest})
+  }
+
   render() {
   return (
     <View style={styles.container}>
@@ -35,3 +44,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+TaskManager.defineTask('getLocationTask',({data, error}) => {
+  if (error){
+    return;
+  }
+  if (data){
+    const { locations } = data;
+    GeoLocation.saveLocation(locations)
+  }
+})
