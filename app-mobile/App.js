@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import PushNotifications from './src/services/PushNotifications'
 import GeoLocation from './src/services/GeoLocation'
 import * as TaskManager from 'expo-task-manager';
 import * as Location from 'expo-location';
 import * as firebase from 'firebase'
 import ApiKeys from './constants/ApiKeys'
+import Report from './src/services/Report'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class App extends React.Component {
       <Button
         title="Reportar Assédio"
         color="#DC143C"
-        onPress={() => Alert.alert("Pronto","Assédio Reportado")}
+        onPress={() => Report.reportHarassment()}
       />
       <StatusBar style="auto" />
     </View>
