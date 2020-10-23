@@ -24,7 +24,8 @@
     },
     "android":{
       "package":"com.ufmg.projeto_antiassedio",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "useNextNotificationsApi": true
     }
   }
 }
