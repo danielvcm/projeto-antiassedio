@@ -2,6 +2,8 @@ import Constants from 'expo-constants'
 import * as firebase from 'firebase'
 import * as Permissions from 'expo-permissions'
 import * as Notifications from 'expo-notifications'
+import {Platform} from 'react-native';
+
 export default{
     async registerForPushNotifications() {
         const {status} = await Permissions.getAsync(Permissions.NOTIFICATIONS)
@@ -19,6 +21,14 @@ export default{
         firebase.database().ref("users").child(uid).update({
             expoPushToken: token
         })
+        
+        if (Platform.OS === 'android') {
+            await Notifications.setNotificationChannelAsync('projeto-antiassedio', {
+              name: 'Projeto Antiassedio',
+              importance: Notifications.AndroidImportance.MAX,
+              vibrationPattern: [0, 250, 250, 250],
+            });
+        }
     
     
     }
