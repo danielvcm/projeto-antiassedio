@@ -4,7 +4,7 @@
     "slug": "projeto-antiassedio",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/splash.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -25,7 +25,11 @@
     "android":{
       "package":"com.ufmg.projeto_antiassedio",
       "googleServicesFile": "./google-services.json",
+      "adaptiveIcon":{
+        "foregroundImage":"./assets/splash.png"
+      },
       "useNextNotificationsApi": true
-    }
+    },
+    "privacy": "public"
   }
 }

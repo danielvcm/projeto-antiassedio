@@ -25,7 +25,7 @@ export default class App extends React.Component {
   render() {
   return (
     <View style={styles.container}>
-      <Text>Projeto Antiassédio{"\n"}</Text>
+      <Text style={styles.paragraph}>Alerta de Assédio{"\n"}</Text>
       <Button
         title="Reportar Assédio"
         color="#DC143C"
@@ -43,6 +43,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },paragraph: {
+    color: "black",
+    fontSize: 28,
+    marginBottom: 180
   },
 });
 
