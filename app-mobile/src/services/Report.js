@@ -5,13 +5,13 @@ import GeoLocation from './GeoLocation'
 export default{
     async sendAlertRequest(){
         const location = await GeoLocation.getLocation()
-        response = await axios.post('http://955cd8b51c88.ngrok.io/alert',{
+        const response = await axios.post('http://35.198.25.208:80/alert',{
             location: location
         })
         return response.status
     },
     async reportHarassment(){
-        status = await this.sendAlertRequest()
+        let status = await this.sendAlertRequest()
         if (status == 200){
             Alert.alert("Pronto","Assédio Reportado")
             return
