@@ -25,7 +25,11 @@
     "android":{
       "package":"com.ufmg.projeto_antiassedio",
       "googleServicesFile": "./google-services.json",
+      "adaptiveIcon":{
+        "foregroundImage":"./assets/splash.png"
+      },
       "useNextNotificationsApi": true
-    }
+    },
+    "privacy": "public"
   }
 }
